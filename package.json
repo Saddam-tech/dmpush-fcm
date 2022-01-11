@@ -1,5 +1,5 @@
 {
-  "name": "dmpush-fcm",
+  "name": "nuxtdmpush-fcm",
   "version": "1.0.0",
   "private": true,
   "scripts": {
