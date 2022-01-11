@@ -13,24 +13,14 @@ import { messaging } from "@/plugins/firebase";
 export default {
   name: "IndexPage",
   mounted() {
-    function isWindowControllerSupported() {
-      return (
-        navigator.cookieEnabled &&
-        "serviceWorker" in navigator &&
-        "PushManager" in window &&
-        "Notification" in window &&
-        "fetch" in window &&
-        ServiceWorkerRegistration.prototype.hasOwnProperty(
-          "showNotification"
-        ) &&
-        PushSubscription.prototype.hasOwnProperty("getKey")
-      );
-    }
-
-    isWindowControllerSupported();
     const messaging = getMessaging();
 
     onMessage(messaging, (payload) => {
+      const body = payload.notification.body;
+      const title = payload.notification.title;
+      const img = payload.notification.image;
+
+      alert(body);
       console.log("Message on client: ", payload);
     });
   },
