@@ -2,6 +2,7 @@
   <div class="container">
     <h1>FCM push notifications</h1>
     <a @click="authenticate">Authenticate</a>
+    <NuxtLink to="/send">Send Notification</NuxtLink>
   </div>
 </template>
 
@@ -17,8 +18,8 @@ export default {
 
     onMessage(messaging, (payload) => {
       const body = payload.notification.body;
-      const title = payload.notification.title;
-      const img = payload.notification.image;
+      // const title = payload.notification.title;
+      // const img = payload.notification.image;
 
       alert(body);
       console.log("Message on client: ", payload);
@@ -26,8 +27,11 @@ export default {
   },
   methods: {
     async authenticate() {
-      await signInAnonymously(getAuth());
-      this.activate();
+      Notification.requestPermission().then(async (permission) => {
+        console.log(permission);
+        await signInAnonymously(getAuth());
+        this.activate();
+      });
     },
     async activate() {
       const token = await getToken(messaging, {
@@ -37,10 +41,21 @@ export default {
 
       if (token) {
         console.log(token);
-      } else {
-        // Request permission
       }
     },
   },
 };
 </script>
+
+<style scoped>
+.container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.container a {
+  margin-top: 20px;
+  cursor: pointer;
+}
+</style>
