@@ -18,10 +18,10 @@ export default {
 
     onMessage(messaging, (payload) => {
       const body = payload.notification.body;
-      // const title = payload.notification.title;
-      // const img = payload.notification.image;
+      const title = payload.notification.title;
+      const img = payload.notification.image;
 
-      alert(body);
+      alert(body, title, img);
       console.log("Message on client: ", payload);
     });
   },
