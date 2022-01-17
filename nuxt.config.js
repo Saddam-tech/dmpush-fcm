@@ -2,7 +2,7 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   target: "static",
   head: {
-    title: "dmpush-fcm",
+    title: "DMPush",
     htmlAttrs: {
       lang: "en",
     },
@@ -25,7 +25,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: ["@nuxtjs/pwa"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
